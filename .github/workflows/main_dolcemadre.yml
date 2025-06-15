@@ -23,8 +23,8 @@ jobs:
         with:
           dotnet-version: '9.x'
 
-      - name: Build with dotnet
-        run: dotnet build --configuration Release
+      - name: Build .NET app
+        run: dotnet build ./MiTiendaDolceMadre/MiTiendaDolceMadre.csproj --configuration Release
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
