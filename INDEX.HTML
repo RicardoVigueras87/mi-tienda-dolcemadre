@@ -19,33 +19,44 @@
 					<div class="container">
 
 						<!-- Logo -->
-							<h1 id="logo"><a href="index.html">Strongly Typed</a></h1>
-							<p>A responsive HTML5 site template. Manufactured by HTML5 UP.</p>
+						<div style="text-align: center;">
+							<a href="index.html">
+								<img src="images/logo.png" alt="Dolce Madre Logo" style="height:120px; display:block; margin: 0 auto;">
+							</a>
+							<h1 id="logo" style="margin-top: 10px;">
+								DOLCE MΛDRE
+							</h1>
+							<p>Vestir la vida desde el primer latido.</p>
+						</div>
 
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-									<li><a class="icon solid fa-home" href="index.html"><span>Introduction</span></a></li>
+									<li><a class="icon solid fa-home" href="index.html"><span>QUIENES SOMOS</span></a></li>
 									<li>
-										<a href="#" class="icon fa-chart-bar"><span>Dropdown</span></a>
+										<a href="#" class="icon fa-chart-bar"><span>SHOP</span></a>
 										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
+											<li><a href="#">COLECCIONES</a></li>
+											<li><a href="#">BLUSAS</a></li>
+											<li><a href="#">VESTIDOS</a></li>
+											<li><a href="#">JOGGERS</a></li>
+											<li><a href="#">SUÉTERES</a></li>
+											<li><a href="#">TOPS</a></li>
+											<li><a href="#">JUMPSUITS</a></li>
 											<li>
-												<a href="#">Phasellus consequat</a>
+												<a href="#">ROPA INTERIOR</a>
 												<ul>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
+													<li><a href="#">BRASSIERES</a></li>
+													<li><a href="#">SHORTS</a></li>
+													<li><a href="#">FAJAS</a></li>
 												</ul>
 											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
+											<li><a href="#">PANTALONES</a></li>
 										</ul>
 									</li>
-									<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>Left Sidebar</span></a></li>
-									<li><a class="icon solid fa-retweet" href="right-sidebar.html"><span>Right Sidebar</span></a></li>
-									<li><a class="icon solid fa-sitemap" href="no-sidebar.html"><span>No Sidebar</span></a></li>
+									<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>CONTACTO</span></a></li>
+									<li><a class="icon solid fa-retweet" href="right-sidebar.html"><span>BLOG</span></a></li>
+									<li><a class="icon solid fa-sitemap" href="no-sidebar.html"><span>REBAJAS</span></a></li>
 								</ul>
 							</nav>
 
@@ -56,7 +67,7 @@
 				<section id="features">
 					<div class="container">
 						<header>
-							<h2>Gentlemen, behold! This is <strong>Strongly Typed</strong>!</h2>
+							<h2>¡Bienvenida a DOLCE MΛDRE! ¡<strong>Nuestra Historia</strong>!</h2>
 						</header>
 						<div class="row aln-center">
 							<div class="col-4 col-6-medium col-12-small">
@@ -65,11 +76,11 @@
 									<section>
 										<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
 										<header>
-											<h3>Okay, so what is this?</h3>
+											<h3>Acerca de Nosotros</h3>
 										</header>
-										<p>This is <strong>Strongly Typed</strong>, a free, fully responsive site template
-										by <a href="http://html5up.net">HTML5 UP</a>. Free for personal and commercial use under the
-										<a href="http://html5up.net/license">CCA 3.0 license</a>.</p>
+										<p>Desde 2003 <strong>Miriam Alviter</strong>, ha sido una inspiración para miles de mamás,
+										marcando un antes y un después en la moda para maternidad en México. 
+										Hoy, DOLCE MΛDRE es mucho más que una marca: es un abrazo hecho prenda, que acompaña con amor, sensibilidad y estilo cada momento de esta hermosa etapa.</a>.</p>
 									</section>
 
 							</div>
@@ -110,12 +121,28 @@
 				</section>
 
 			<!-- Banner -->
-				<section id="banner">
-					<div class="container">
-						<p>Use this space for <strong>profound thoughts</strong>.<br />
-						Or an enormous ad. Whatever.</p>
-					</div>
-				</section>
+			<section id="banner">
+				<div class="container">
+					<p id="maternity-quote" style="text-align:center;">
+						<strong>"</strong>La maternidad es el viaje más sagrado del amor: <strong>donde cada latido forma un lazo eterno</strong>.<br />
+						y cada gesto siembra raíces de vida, fuerza y ternura.<strong>"</strong>
+					</p>
+				</div>
+			</section>
+			<script>
+				const quotes = [
+					'<strong>"</strong>La maternidad es el viaje más sagrado del amor: <strong>donde cada latido forma un lazo eterno</strong>.<br />y cada gesto siembra raíces de vida, fuerza y ternura.<strong>"</strong>',
+					'<strong>"</strong>Ser madre es descubrir una fortaleza interior que transforma cada desafío en un acto de amor.<strong>"</strong>',
+					'<strong>"</strong>La entrega de una madre es el lazo invisible que conecta corazones para toda la vida.<strong>"</strong>',
+					'<strong>"</strong>En la maternidad, cada día es una oportunidad de transformación y crecimiento compartido.<strong>"</strong>',
+					'<strong>"</strong>La conexión entre madre e hijo es un puente de ternura, comprensión y esperanza.<strong>"</strong>'
+				];
+				let current = 0;
+				setInterval(() => {
+					current = (current + 1) % quotes.length;
+					document.getElementById('maternity-quote').innerHTML = quotes[current];
+				}, 9000);
+			</script>
 
 			<!-- Main -->
 				<section id="main">
@@ -281,7 +308,8 @@
 				<section id="footer">
 					<div class="container">
 						<header>
-							<h2>Questions or comments? <strong>Get in touch:</strong></h2>
+							<h2>¿PREGUNTAS o comentarios? 
+								<strong>Póngase en contacto:</strong></h2>
 						</header>
 						<div class="row">
 							<div class="col-6 col-12-medium">
@@ -306,38 +334,38 @@
 							</div>
 							<div class="col-6 col-12-medium">
 								<section>
-									<p>Erat lorem ipsum veroeros consequat magna tempus lorem ipsum consequat Phaselamet
-									mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique. Curabitur
-									leo nibh, rutrum eu malesuada.</p>
+									<p>Agradecemos tu interés y nos encantará conocerte. Por favor, completa el formulario y nos pondremos en contacto
+									contigo a la brevedad. Si tienes preguntas sobre nuestras prendas, tiendas o cualquier otro detalle, estamos
+									aquí para apoyarte.</p>
 									<div class="row">
 										<div class="col-6 col-12-small">
 											<ul class="icons">
 												<li class="icon solid fa-home">
-													1234 Somewhere Road<br />
-													Nashville, TN 00000<br />
-													USA
+													Calle Emilio Carranza 19,<br />
+													San Cristóbal Centro, <br />
+													Ecatepec de Morelos, <br /> Méx. C.P. 55000
 												</li>
 												<li class="icon solid fa-phone">
-													(000) 000-0000
+													(55) 4581-2367
 												</li>
 												<li class="icon solid fa-envelope">
-													<a href="#">info@untitled.tld</a>
+													<a href="#">info@dolcemadre.com</a>
 												</li>
 											</ul>
 										</div>
 										<div class="col-6 col-12-small">
 											<ul class="icons">
-												<li class="icon brands fa-twitter">
-													<a href="#">@untitled</a>
+												<li class="icon brands fa-TikTok">
+													<a href="#">@DolceMadre_MX</a>
 												</li>
 												<li class="icon brands fa-instagram">
-													<a href="#">instagram.com/untitled</a>
+													<a href="#">instagram.com/DolceMadre_MX</a>
 												</li>
 												<li class="icon brands fa-dribbble">
-													<a href="#">dribbble.com/untitled</a>
+													<a href="#">dolcemadre.com/</a>
 												</li>
 												<li class="icon brands fa-facebook-f">
-													<a href="#">facebook.com/untitled</a>
+													<a href="#">facebook.com/DolceMadre.MX</a>
 												</li>
 											</ul>
 										</div>
