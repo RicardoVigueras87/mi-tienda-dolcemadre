@@ -6,9 +6,10 @@
 -->
 <html>
 	<head>
-		<title>Left Sidebar - Strongly Typed by HTML5 UP</title>
+		<title>¡Bienvenida a DOLCE MΛDRE! | Moda de Maternidad</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="icon" type="image/x-icon" href="images/logo.ico" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
 	<body class="left-sidebar is-preload">
@@ -17,7 +18,146 @@
 			<!-- Header -->
 				<section id="header">
 					<div class="container">
+						<!-- Slide Bar -->
+						<style>
+							#message-bar {
+								position: fixed;
+								top: 0;
+								left: 0;
+								width: 100%;
+								background: #f7e6e6;
+								color: #333333;
+								z-index: 2000;
+								height: 44px;
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								overflow: hidden;
+								box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+								font-family: inherit;
+								transition: top 0.3s;
+							}
+							#message-bar .arrow {
+								background: none;
+								border: none;
+								color: #333333;
+								font-size: 1.5em;
+								cursor: pointer;
+								padding: 0 18px;
+								height: 100%;
+								display: flex;
+								align-items: center;
+								transition: background 0.2s;
+							}
+							#message-bar .arrow:hover {
+								background: rgba(0,0,0,0.05);
+							}
+							#message-bar .slider-container {
+								flex: 1;
+								overflow: hidden;
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								height: 100%;
+								position: relative;
+							}
+							#message-bar .slider-message {
+								white-space: nowrap;
+								font-size: 1.1em;
+								font-weight: 600;
+								opacity: 1;
+								transition: opacity 0.3s;
+								text-align: center;
+								width: 100%;
+								position: absolute;
+								left: 0;
+								right: 0;
+							}
+						</style>
+						<div id="message-bar">
+							<button class="arrow" id="msg-prev" aria-label="Anterior">&#10094;</button>
+							<div class="slider-container">
+								<span class="slider-message" id="slider-message">Dolce Madre En Línea - Tienda oficial</span>
+							</div>
+							<button class="arrow" id="msg-next" aria-label="Siguiente">&#10095;</button>
+						</div>
+						<script>
+							const messages = [
+								'Dolce Madre En Línea - Tienda oficial',
+								'Obten 3 y 6 MSI en compras de $3,499.00, consulta términos y condiciones',
+								'Envíos gratis a partir en compra mínima de $1,999.00, consulta términos y condiciones',
+								'Obtén 10% de rebaja en tu primera compra, consulta términos y condiciones'
+							];
+							let msgIndex = 0;
+							const msgElem = document.getElementById('slider-message');
+							const prevBtn = document.getElementById('msg-prev');
+							const nextBtn = document.getElementById('msg-next');
+							const messageBar = document.getElementById('message-bar');
+							let autoSlide;
+							let lastScrollY = window.scrollY;
 
+							function showMessage(idx) {
+								msgElem.style.opacity = 0;
+								setTimeout(() => {
+									msgElem.textContent = messages[idx];
+									msgElem.style.opacity = 1;
+								}, 200);
+							}
+
+							function nextMessage() {
+								msgIndex = (msgIndex + 1) % messages.length;
+								showMessage(msgIndex);
+							}
+
+							function prevMessage() {
+								msgIndex = (msgIndex - 1 + messages.length) % messages.length;
+								showMessage(msgIndex);
+							}
+
+							prevBtn.addEventListener('click', () => {
+								prevMessage();
+								resetAutoSlide();
+							});
+							nextBtn.addEventListener('click', () => {
+								nextMessage();
+								resetAutoSlide();
+							});
+
+							function startAutoSlide() {
+								autoSlide = setInterval(nextMessage, 4000);
+							}
+							function resetAutoSlide() {
+								clearInterval(autoSlide);
+								startAutoSlide();
+							}
+
+							// Ocultar la barra al hacer scroll hacia abajo, mostrar al subir
+							let barVisible = true;
+							window.addEventListener('scroll', function() {
+								const currentScrollY = window.scrollY;
+								if (currentScrollY > lastScrollY && currentScrollY > 60) {
+									// Scroll hacia abajo, ocultar barra
+									if (barVisible) {
+										messageBar.style.top = '-44px';
+										barVisible = false;
+									}
+								} else {
+									// Scroll hacia arriba, mostrar barra
+									if (!barVisible) {
+										messageBar.style.top = '0';
+										barVisible = true;
+									}
+								}
+								lastScrollY = currentScrollY;
+							});
+
+							// Ajustar el desplazamiento del logo y header por la barra fija
+							document.addEventListener('DOMContentLoaded', function() {
+								const header = document.getElementById('header');
+								header.style.marginTop = '44px';
+								startAutoSlide();
+							});
+						</script>
 						<!-- Logo -->
 						<div style="text-align: center;">
 							<a href="index.html">
