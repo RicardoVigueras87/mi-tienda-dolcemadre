@@ -1,0 +1,639 @@
+@{
+    ViewData["Title"] = "¡Bienvenida a DOLCE MΛDRE! | Moda de Maternidad";
+}
+
+<body class="homepage is-preload">
+ <div id="page-wrapper">
+  <!-- Header -->
+  <section id="header">
+   <div class="container">
+    <!-- Slide Bar -->
+    <style>
+     #message-bar {
+								position: fixed;
+								top: 0;
+								left: 0;
+								width: 100%;
+								background: #f7e6e6;
+								color: #333333;
+								z-index: 2000;
+								height: 44px;
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								overflow: hidden;
+								box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+								font-family: inherit;
+								transition: top 0.3s;
+							}
+							#message-bar .arrow {
+								background: none;
+								border: none;
+								color: #333333;
+								font-size: 1.5em;
+								cursor: pointer;
+								padding: 0 18px;
+								height: 100%;
+								display: flex;
+								align-items: center;
+								transition: background 0.2s;
+							}
+							#message-bar .arrow:hover {
+								background: rgba(0,0,0,0.05);
+							}
+							#message-bar .slider-container {
+								flex: 1;
+								overflow: hidden;
+								display: flex;
+								align-items: center;
+								justify-content: center;
+								height: 100%;
+								position: relative;
+							}
+							#message-bar .slider-message {
+								white-space: nowrap;
+								font-size: 1.1em;
+								font-weight: 600;
+								opacity: 1;
+								transition: opacity 0.3s;
+								text-align: center;
+								width: 100%;
+								position: absolute;
+								left: 0;
+								right: 0;
+							}
+    </style>
+    <div id="message-bar">
+     <button aria-label="Anterior" class="arrow" id="msg-prev">
+      ❮
+     </button>
+     <div class="slider-container">
+      <span class="slider-message" id="slider-message">
+       Dolce Madre En Línea - Tienda oficial
+      </span>
+     </div>
+     <button aria-label="Siguiente" class="arrow" id="msg-next">
+      ❯
+     </button>
+    </div>
+    <script>
+     const messages = [
+								'Dolce Madre En Línea - Tienda oficial',
+								'Obten 3 y 6 MSI en compras de $3,499.00, consulta términos y condiciones',
+								'Envíos gratis a partir en compra mínima de $1,999.00, consulta términos y condiciones',
+								'Obtén 10% de rebaja en tu primera compra, consulta términos y condiciones'
+							];
+							let msgIndex = 0;
+							const msgElem = document.getElementById('slider-message');
+							const prevBtn = document.getElementById('msg-prev');
+							const nextBtn = document.getElementById('msg-next');
+							const messageBar = document.getElementById('message-bar');
+							let autoSlide;
+							let lastScrollY = window.scrollY;
+
+							function showMessage(idx) {
+								msgElem.style.opacity = 0;
+								setTimeout(() => {
+									msgElem.textContent = messages[idx];
+									msgElem.style.opacity = 1;
+								}, 200);
+							}
+
+							function nextMessage() {
+								msgIndex = (msgIndex + 1) % messages.length;
+								showMessage(msgIndex);
+							}
+
+							function prevMessage() {
+								msgIndex = (msgIndex - 1 + messages.length) % messages.length;
+								showMessage(msgIndex);
+							}
+
+							prevBtn.addEventListener('click', () => {
+								prevMessage();
+								resetAutoSlide();
+							});
+							nextBtn.addEventListener('click', () => {
+								nextMessage();
+								resetAutoSlide();
+							});
+
+							function startAutoSlide() {
+								autoSlide = setInterval(nextMessage, 4000);
+							}
+							function resetAutoSlide() {
+								clearInterval(autoSlide);
+								startAutoSlide();
+							}
+
+							// Ocultar la barra al hacer scroll hacia abajo, mostrar al subir
+							let barVisible = true;
+							window.addEventListener('scroll', function() {
+								const currentScrollY = window.scrollY;
+								if (currentScrollY > lastScrollY && currentScrollY > 60) {
+									// Scroll hacia abajo, ocultar barra
+									if (barVisible) {
+										messageBar.style.top = '-44px';
+										barVisible = false;
+									}
+								} else {
+									// Scroll hacia arriba, mostrar barra
+									if (!barVisible) {
+										messageBar.style.top = '0';
+										barVisible = true;
+									}
+								}
+								lastScrollY = currentScrollY;
+							});
+
+							// Ajustar el desplazamiento del logo y header por la barra fija
+							document.addEventListener('DOMContentLoaded', function() {
+								const header = document.getElementById('header');
+								header.style.marginTop = '44px';
+								startAutoSlide();
+							});
+    </script>
+    <!-- Logo -->
+    <div id="logo-container" style="text-align: center; position: fixed; top: 44px; left: 0; width: 100%; background: rgba(255,255,255,0.95); z-index: 1500; transition: top 0.3s, all 0.3s;">
+     <a href="index.html">
+      <img alt="Dolce Madre Logo" id="logo-img" src="~/images/logo.png" style="height:120px; display:block; margin: 0 auto; transition: height 0.3s;"/>
+     </a>
+     <p id="logo-slogan" style="transition: opacity 0.3s;">
+      Vestir la vida desde el primer latido.
+     </p>
+    </div>
+    <script>
+     document.addEventListener('DOMContentLoaded', function() {
+							const logoContainer = document.getElementById('logo-container');
+							const logoImg = document.getElementById('logo-img');
+							const logo = document.getElementById('logo');
+							const logoSlogan = document.getElementById('logo-slogan');
+							const messageBar = document.getElementById('message-bar');
+							let isShrunk = false;
+							let barVisible = true;
+							let lastScrollY = window.scrollY;
+
+							function shrinkLogo() {
+								if (!isShrunk) {
+									logoImg.style.height = '60px';
+									logo.style.fontSize = '1.5em';
+									logoSlogan.style.opacity = '0';
+									isShrunk = true;
+								}
+							}
+
+							function restoreLogo() {
+								if (isShrunk) {
+									logoImg.style.height = '120px';
+									logo.style.fontSize = '';
+									logoSlogan.style.opacity = '1';
+									isShrunk = false;
+								}
+							}
+
+							function adjustLogoTop(showBar) {
+								logoContainer.style.top = showBar ? '44px' : '0';
+							}
+
+							window.addEventListener('scroll', function() {
+								const currentScrollY = window.scrollY;
+								if (currentScrollY > lastScrollY && currentScrollY > 60) {
+									// Scroll down: hide bar, move logo up
+									if (barVisible) {
+										messageBar.style.top = '-44px';
+										adjustLogoTop(false);
+										barVisible = false;
+									}
+								} else {
+									// Scroll up: show bar, move logo down
+									if (!barVisible) {
+										messageBar.style.top = '0';
+										adjustLogoTop(true);
+										barVisible = true;
+									}
+								}
+								if (window.scrollY > 60) {
+									shrinkLogo();
+								} else {
+									restoreLogo();
+								}
+								lastScrollY = currentScrollY;
+							});
+
+							// Ajuste inicial
+							adjustLogoTop(true);
+						});
+    </script>
+    <!-- Nav -->
+    <nav id="nav">
+     <ul>
+      <li>
+       <a class="icon solid fa-home" href="index.html">
+        <span>
+         QUIENES SOMOS
+        </span>
+       </a>
+      </li>
+      <li>
+       <a class="icon fa-chart-bar" href="#">
+        <span>
+         SHOP
+        </span>
+       </a>
+       <ul>
+        <li>
+         <a href="#">
+          COLECCIONES
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          BLUSAS
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          VESTIDOS
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          JOGGERS
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          SUÉTERES
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          TOPS
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          JUMPSUITS
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          ROPA INTERIOR
+         </a>
+         <ul>
+          <li>
+           <a href="#">
+            BRASSIERES
+           </a>
+          </li>
+          <li>
+           <a href="#">
+            SHORTS
+           </a>
+          </li>
+          <li>
+           <a href="#">
+            FAJAS
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li>
+         <a href="#">
+          PANTALONES
+         </a>
+        </li>
+       </ul>
+      </li>
+      <li>
+       <a class="icon solid fa-cog" href="left-sidebar.html">
+        <span>
+         CONTACTO
+        </span>
+       </a>
+      </li>
+      <li>
+       <a class="icon solid fa-retweet" href="right-sidebar.html">
+        <span>
+         BLOG
+        </span>
+       </a>
+      </li>
+      <li>
+       <a class="icon solid fa-sitemap" href="no-sidebar.html">
+        <span>
+         REBAJAS
+        </span>
+       </a>
+      </li>
+     </ul>
+    </nav>
+   </div>
+  </section>
+  <!-- Features -->
+  <section id="features">
+   <div class="container">
+    <header>
+     <h2>
+      ¡Bienvenida a DOLCE MΛDRE! ¡
+      <strong>
+       Nuestra Historia
+      </strong>
+      !
+     </h2>
+    </header>
+    <div class="row aln-center">
+     <div class="col-4 col-6-medium col-12-small">
+      <!-- Feature -->
+      <section>
+       <a class="image featured" href="#">
+        <img alt="" src="~/images/pic01.jpg"/>
+       </a>
+       <header>
+        <h3>
+         Acerca de Nosotros
+        </h3>
+       </header>
+       <p>
+        Desde 2003
+        <strong>
+         Miriam Alviter
+        </strong>
+        , ha sido una inspiración para miles de mamás,
+										marcando un antes y un después en la moda para maternidad en México. 
+										Hoy, DOLCE MΛDRE es mucho más que una marca: es un abrazo hecho prenda, que acompaña con amor, sensibilidad y estilo cada momento de esta hermosa etapa.
+        .
+       </p>
+      </section>
+     </div>
+     <div class="col-4 col-6-medium col-12-small">
+      <!-- Feature -->
+      <section>
+       <a class="image featured" href="#">
+        <img alt="" src="~/images/pic02.jpg"/>
+       </a>
+       <header>
+        <h3>
+         Nice! What is HTML5 UP?
+        </h3>
+       </header>
+       <p>
+        <a href="http://html5up.net">
+         HTML5 UP
+        </a>
+        is a side project of
+        <a href="http://twitter.com/ajlkn">
+         AJ’s
+        </a>
+        (= me).
+										I started it as a way to both test my responsive tools and sharpen up my coding
+										and design skills a bit.
+       </p>
+      </section>
+     </div>
+     <div class="col-4 col-6-medium col-12-small">
+      <!-- Feature -->
+      <section>
+       <a class="image featured" href="#">
+        <img alt="" src="~/images/pic03.jpg"/>
+       </a>
+       <header>
+        <h3>
+         What's this built with?
+        </h3>
+       </header>
+       <p>
+        <strong>
+         Responsive Tools
+        </strong>
+        is a simple set of tools for building responsive
+										sites and apps. All of my templates at
+        <a href="http://html5up.net">
+         HTML5 UP
+        </a>
+        are built using these tools.
+       </p>
+      </section>
+     </div>
+     <div class="col-12">
+      <ul class="actions">
+       <li>
+        <a class="button icon solid fa-file" href="#">
+         Tell Me More
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Banner -->
+  <section id="banner">
+   <div class="container">
+    <p id="maternity-quote" style="text-align:center;">
+     <strong>
+      "
+     </strong>
+     La maternidad es el viaje más sagrado del amor:
+     <strong>
+      donde cada latido forma un lazo eterno
+     </strong>
+     .
+     <br/>
+     y cada gesto siembra raíces de vida, fuerza y ternura.
+     <strong>
+      "
+     </strong>
+    </p>
+   </div>
+  </section>
+  <script>
+   const quotes = [
+					'<strong>"</strong>La maternidad es el viaje más sagrado del amor: <strong>donde cada latido forma un lazo eterno</strong>.<br />y cada gesto siembra raíces de vida, fuerza y ternura.<strong>"</strong>',
+					'<strong>"</strong>Ser madre es descubrir una fortaleza interior que transforma cada desafío en un acto de amor.<strong>"</strong>',
+					'<strong>"</strong>La entrega de una madre es el lazo invisible que conecta corazones para toda la vida.<strong>"</strong>',
+					'<strong>"</strong>En la maternidad, cada día es una oportunidad de transformación y crecimiento compartido.<strong>"</strong>',
+					'<strong>"</strong>La conexión entre madre e hijo es un puente de ternura, comprensión y esperanza.<strong>"</strong>'
+				];
+				let current = 0;
+				setInterval(() => {
+					current = (current + 1) % quotes.length;
+					document.getElementById('maternity-quote').innerHTML = quotes[current];
+				}, 9000);
+  </script>
+  <!-- Main -->
+  <section id="main">
+   <div class="container">
+    <div class="row">
+     <!-- Content -->
+     <div class="col-8 col-12-medium" id="content">
+      <!-- Post -->
+      <article class="box post">
+       <header>
+       </header>
+      </article>
+     </div>
+     <h2>
+      <a href="#">
+       I don’t want to say
+       <strong>
+        it’s the aliens
+       </strong>
+       .
+       ..
+       <br/>
+       but it’s the aliens.
+      </a>
+     </h2>
+     <a class="image featured" href="#">
+      <img alt="" src="~/images/pic04.jpg"/>
+     </a>
+     <h3>
+      I mean isn't it possible?
+     </h3>
+     <p>
+      Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit
+											ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
+											sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada
+											in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
+											magna tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros
+											consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
+											justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
+											mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique.
+											Curabitur leo nibh, rutrum eu malesuada in tristique.
+     </p>
+     <ul class="actions">
+      <li>
+       <a class="button icon solid fa-file" href="#">
+        Continue Reading
+       </a>
+      </li>
+     </ul>
+     <!-- Sidebar -->
+     <div class="col-4 col-12-medium" id="sidebar">
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Footer -->
+  <section id="footer">
+   <div class="container">
+    <header>
+     <h2>
+      ¿PREGUNTAS o comentarios?
+      <strong>
+       Póngase en contacto:
+      </strong>
+     </h2>
+    </header>
+    <div class="row">
+     <div class="col-6 col-12-medium">
+      <section>
+       <form action="#" method="post">
+        <div class="row gtr-50">
+         <div class="col-6 col-12-small">
+          <input name="name" placeholder="Name" type="text"/>
+         </div>
+         <div class="col-6 col-12-small">
+          <input name="email" placeholder="Email" type="text"/>
+         </div>
+         <div class="col-12">
+          <textarea name="message" placeholder="Message"></textarea>
+         </div>
+         <div class="col-12">
+          <a class="form-button-submit button icon solid fa-envelope" href="#">
+           Send Message
+          </a>
+         </div>
+        </div>
+       </form>
+      </section>
+     </div>
+     <div class="col-6 col-12-medium">
+      <section>
+       <p>
+        Agradecemos tu interés y nos encantará conocerte. Por favor, completa el formulario y nos pondremos en contacto
+									contigo a la brevedad. Si tienes preguntas sobre nuestras prendas, tiendas o cualquier otro detalle, estamos
+									aquí para apoyarte.
+       </p>
+       <div class="row">
+        <div class="col-6 col-12-small">
+         <ul class="icons">
+          <li class="icon solid fa-home">
+           Calle Emilio Carranza 19,
+           <br/>
+           San Cristóbal Centro,
+           <br/>
+           Ecatepec de Morelos,
+           <br/>
+           Méx. C.P. 55000
+          </li>
+          <li class="icon solid fa-phone">
+           (55) 4581-2367
+          </li>
+          <li class="icon solid fa-envelope">
+           <a href="#">
+            info@dolcemadre.com
+           </a>
+          </li>
+         </ul>
+        </div>
+        <div class="col-6 col-12-small">
+         <ul class="icons">
+          <li class="icon brands fa-TikTok">
+           <a href="#">
+            @DolceMadre_MX
+           </a>
+          </li>
+          <li class="icon brands fa-instagram">
+           <a href="#">
+            instagram.com/DolceMadre_MX
+           </a>
+          </li>
+          <li class="icon brands fa-dribbble">
+           <a href="#">
+            dolcemadre.com/
+           </a>
+          </li>
+          <li class="icon brands fa-facebook-f">
+           <a href="#">
+            facebook.com/DolceMadre.MX
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+      </section>
+     </div>
+    </div>
+   </div>
+   <div class="container" id="copyright">
+    <ul class="links">
+     <li>
+      © DOLCE MΛDRE México. All rights reserved.
+     </li>
+     <li>
+      Design:
+      <a href="http://dolcemadre.com">
+       DOLCEMADRE.COM
+      </a>
+     </li>
+    </ul>
+   </div>
+  </section>
+ </div>
+ <!-- Scripts -->
+ <script src="~/assets/js/jquery.min.js">
+ </script>
+ <script src="~/assets/js/jquery.dropotron.min.js">
+ </script>
+ <script src="~/assets/js/browser.min.js">
+ </script>
+ <script src="~/assets/js/breakpoints.min.js">
+ </script>
+ <script src="~/assets/js/util.js">
+ </script>
+ <script src="~/assets/js/main.js">
+ </script>
+</body>
+

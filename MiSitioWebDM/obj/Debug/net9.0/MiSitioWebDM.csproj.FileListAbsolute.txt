@@ -1,0 +1,9 @@
+D:\OneDrive - Laureate Mexico\Documents\PROYECTO PLAN DE NEGOCIO COMERCIO EN LINEA\TIENDA DE MATERNIDAD\DESARROLLO WEB\PROYECTO\MiSitioWebDM\obj\Debug\net9.0\rpswa.dswa.cache.json
+D:\OneDrive - Laureate Mexico\Documents\PROYECTO PLAN DE NEGOCIO COMERCIO EN LINEA\TIENDA DE MATERNIDAD\DESARROLLO WEB\PROYECTO\MiSitioWebDM\obj\Debug\net9.0\MiSitioWebDM.GeneratedMSBuildEditorConfig.editorconfig
+D:\OneDrive - Laureate Mexico\Documents\PROYECTO PLAN DE NEGOCIO COMERCIO EN LINEA\TIENDA DE MATERNIDAD\DESARROLLO WEB\PROYECTO\MiSitioWebDM\obj\Debug\net9.0\MiSitioWebDM.AssemblyInfoInputs.cache
+D:\OneDrive - Laureate Mexico\Documents\PROYECTO PLAN DE NEGOCIO COMERCIO EN LINEA\TIENDA DE MATERNIDAD\DESARROLLO WEB\PROYECTO\MiSitioWebDM\obj\Debug\net9.0\MiSitioWebDM.AssemblyInfo.cs
+D:\OneDrive - Laureate Mexico\Documents\PROYECTO PLAN DE NEGOCIO COMERCIO EN LINEA\TIENDA DE MATERNIDAD\DESARROLLO WEB\PROYECTO\MiSitioWebDM\obj\Debug\net9.0\MiSitioWebDM.csproj.CoreCompileInputs.cache
+D:\OneDrive - Laureate Mexico\Documents\PROYECTO PLAN DE NEGOCIO COMERCIO EN LINEA\TIENDA DE MATERNIDAD\DESARROLLO WEB\PROYECTO\MiSitioWebDM\obj\Debug\net9.0\MiSitioWebDM.MvcApplicationPartsAssemblyInfo.cache
+D:\OneDrive - Laureate Mexico\Documents\PROYECTO PLAN DE NEGOCIO COMERCIO EN LINEA\TIENDA DE MATERNIDAD\DESARROLLO WEB\PROYECTO\MiSitioWebDM\obj\Debug\net9.0\MiSitioWebDM.RazorAssemblyInfo.cache
+D:\OneDrive - Laureate Mexico\Documents\PROYECTO PLAN DE NEGOCIO COMERCIO EN LINEA\TIENDA DE MATERNIDAD\DESARROLLO WEB\PROYECTO\MiSitioWebDM\obj\Debug\net9.0\MiSitioWebDM.RazorAssemblyInfo.cs
+D:\OneDrive - Laureate Mexico\Documents\PROYECTO PLAN DE NEGOCIO COMERCIO EN LINEA\TIENDA DE MATERNIDAD\DESARROLLO WEB\PROYECTO\MiSitioWebDM\obj\Debug\net9.0\MiSitioWebDM.sourcelink.json
